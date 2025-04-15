@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        nav {
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #4CAF50;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #45a049;
+        }
+
+        section {
+            padding: 20px;
+            margin: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #4CAF50;
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+        }
+
+        .resume-output {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .profile-photo {
+            width: 150px;  /* Small profile photo */
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover; /* Ensures image covers the area */
+            margin: 0 auto;
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to Varuns Website</h1>
+    </header>
+
+    <nav>
+        <a href="#resume-builder">Resume Builder</a>
+    </nav>
+
+    <section id="profile-photo">
+        <h2>Profile Photo</h2>
+        <img src="C:\Users\Lenovo\OneDrive\Desktop\Mdm A40\IMG_20220918_152328.jpg" alt="Profile Photo" class="profile-photo">
+    </section>
+
+    <section id="skills">
+        <h2>Skills & Projects</h2>
+        <p><strong>Skills:</strong>  AnD electronics, Digital design, embedded systems</p>
+        <p><strong>Projects:</strong> Portfolio Website, To-Do List App, Weather App</p>
+    </section>
+
+    <section id="subjects">
+        <h2>Learned Subjects</h2>
+        <ul>
+            <li>Web Development</li>
+            <li>Data Structures and Algorithms</li>
+            <li>ReactJS Basics</li>
+        </ul>
+    </section>
+
+    <section id="hobbies">
+        <h2>My Hobbies</h2>
+        <ul>
+            <li>Coding</li>
+            <li>Photography</li>
+            <li>Reading Books</li>
+            <li>Travelling</li>
+        </ul>
+    </section>
+
+    <section id="resume-builder">
+        <h2>Resume Builder</h2>
+        <div class="form-container">
+            <h1>Resume Builder</h1>
+            <form id="resumeForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="summary">Professional Summary</label>
+                    <textarea id="summary" name="summary" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="skills">Skills (comma-separated)</label>
+                    <input type="text" id="skills" name="skills" required>
+                </div>
+                <div class="form-group">
+                    <label for="experience">Work Experience</label>
+                    <textarea id="experience" name="experience" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="education">Education</label>
+                    <textarea id="education" name="education" rows="4" required></textarea>
+                </div>
+                <button type="button" onclick="generateResume()">Generate Resume</button>
+            </form>
+    
+            <div class="resume" id="resumeOutput" style="display: none;">
+                <h2>Generated Resume</h2>
+                <p><strong>Name:</strong> <span id="outputName"></span></p>
+                <p><strong>Email:</strong> <span id="outputEmail"></span></p>
+                <p><strong>Phone:</strong> <span id="outputPhone"></span></p>
+                <p><strong>Summary:</strong> <span id="outputSummary"></span></p>
+                <p><strong>Skills:</strong> <span id="outputSkills"></span></p>
+                <p><strong>Experience:</strong> <span id="outputExperience"></span></p>
+                <p><strong>Education:</strong> <span id="outputEducation"></span></p>
+            </div>
+        </div>
+    
+        <script>
+            function generateResume() {
+                document.getElementById('resumeOutput').style.display = 'block';
+                document.getElementById('outputName').textContent = document.getElementById('fullName').value;
+                document.getElementById('outputEmail').textContent = document.getElementById('email').value;
+                document.getElementById('outputPhone').textContent = document.getElementById('phone').value;
+                document.getElementById('outputSummary').textContent = document.getElementById('summary').value;
+                document.getElementById('outputSkills').textContent = document.getElementById('skills').value;
+                document.getElementById('outputExperience').textContent = document.getElementById('experience').value;
+                document.getElementById('outputEducation').textContent = document.getElementById('education').value;
+            }
+        </script>
+    </body>
+
+    <div id="resumeOutput" class="resume-output"></div>
+</section>
+
+<footer>
+    <p>Created By: Varun Dornal</p>
+</footer>
+
+</html>
